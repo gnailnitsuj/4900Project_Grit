@@ -104,9 +104,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AO: 2.4
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
+    - _BaseLight: 0.35
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
