@@ -45,5 +45,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0)){
             animations.SetTrigger("Swing");
         }
+        if (Input.GetMouseButtonDown(1)) {
+            animations.SetTrigger("Block");
+        }
     }
 }

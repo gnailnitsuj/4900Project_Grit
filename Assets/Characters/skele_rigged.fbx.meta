@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 38721e5df56806f4cb86282f3230e9b8
+guid: 7771759d08a3e214f9855a4c2753c2bc
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -83,12 +83,7 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton:
-    - name: psxskele(Clone)
-      parentName: 
-      position: {x: -0.000000004877286, y: -0.0000000026822076, z: 0.000000025480984}
-      rotation: {x: -0.00000013520943, y: 0.000000003481813, z: -3.2578384e-11, w: 1}
-      scale: {x: 0.9999998, y: 1, z: 1}
+    skeleton: []
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -99,11 +94,11 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 3
   humanoidOversampling: 1
   avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1

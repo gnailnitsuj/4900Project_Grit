@@ -6,10 +6,12 @@ public class EnemyMovement : MonoBehaviour
     public float radius = 10f;
     Transform target;
     NavMeshAgent agent;
+    public Animator oppAnim;
 
 
     void Start()
     {
+        oppAnim = GetComponent<Animator>();
         target = TargetPlayer.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
     }

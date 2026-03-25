@@ -1,19 +1,17 @@
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class EnemyStats : MonoBehaviour
 {
    [SerializeField] private float maxHP;
-   [SerializeField] private float currentHP;
-   public PlayerHP hpBar;
+   [SerializeField]private float currentHP;
    public float attack;
    
    private void Start() {
     currentHP = maxHP;
-    hpBar.SetSliderMax(maxHP);
    }
 
 public void dealDamage (GameObject target) {
-   var atm = target.GetComponent<PlayerStats>();
+   var atm = target.GetComponent<EnemyStats>();
    if(atm != null){
       atm.TakeDamage(attack);
    }
@@ -21,12 +19,10 @@ public void dealDamage (GameObject target) {
 
 public void TakeDamage (float amount) {
    currentHP -= amount;
-   hpBar.SetSlider(currentHP);
 }
 
 public void Heal (float amount) {
    currentHP += amount;
-   hpBar.SetSlider(currentHP);
 }
 
 private void Update() { 
@@ -40,6 +36,6 @@ private void Update() {
 }
 
 private void Death() { //Placeholder for death screen
-   Debug.Log(". . .");
+   Debug.Log("Enemy Felled.");
 }
 }
