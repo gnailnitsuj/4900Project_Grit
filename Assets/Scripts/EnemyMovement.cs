@@ -22,6 +22,7 @@ public class EnemyMovement : MonoBehaviour
         float distance = Vector3.Distance(target.position, transform.position);
         if (distance  <= radius){
             agent.SetDestination(target.position);
+            oppAnim.SetTrigger("skeleAtk");
         }
     }
 }

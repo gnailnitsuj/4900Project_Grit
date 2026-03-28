@@ -1209,6 +1209,7 @@ GameObject:
   - component: {fileID: 1593344077}
   - component: {fileID: 1593344078}
   - component: {fileID: 1593344079}
+  - component: {fileID: 1593344080}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1342,6 +1343,19 @@ CapsuleCollider:
   m_Height: 2.5685236
   m_Direction: 1
   m_Center: {x: 0, y: 0.5227648, z: 0}
+--- !u!114 &1593344080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593344068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba17bf7ad703d694cae9b5244363db37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponBehaviour
+  weapon: {fileID: 1671587804}
 --- !u!1 &1671587804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,6 +1366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1671587805}
   - component: {fileID: 1671587806}
+  - component: {fileID: 1671587807}
   m_Layer: 0
   m_Name: ClaymoreHitbox
   m_TagString: Untagged
@@ -1393,8 +1408,21 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.14119425, y: 1.1686312, z: 2.5791912}
-  m_Center: {x: 0.37323585, y: -0.33410132, z: -0.78959835}
+  m_Size: {x: 0.14119425, y: 0.3632054, z: 1.365526}
+  m_Center: {x: 0.37322402, y: -0.39466512, z: -0.18276873}
+--- !u!114 &1671587807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671587804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc0b949b3da2aad4882d659a779f430c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponStats
+  damage: 20
 --- !u!1 &1807951339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,7 +1439,7 @@ GameObject:
   - component: {fileID: 1807951341}
   - component: {fileID: 1807951346}
   - component: {fileID: 1807951347}
-  - component: {fileID: 1807951348}
+  - component: {fileID: 1807951349}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Enemy
@@ -1571,7 +1599,7 @@ MonoBehaviour:
   maxHP: 80
   currentHP: 0
   attack: 15
---- !u!114 &1807951348
+--- !u!114 &1807951349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1580,11 +1608,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1807951339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26918c092dec6404ea83a1edef14c34c, type: 3}
+  m_Script: {fileID: 11500000, guid: ba17bf7ad703d694cae9b5244363db37, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyDamage
-  playerStats: {fileID: 1593344077}
-  damage: 5
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponBehaviour
+  weapon: {fileID: 2103557829}
 --- !u!1 &1809744531
 GameObject:
   m_ObjectHideFlags: 0
@@ -1841,7 +1868,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4928492724515802338, guid: 7771759d08a3e214f9855a4c2753c2bc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2103557833}
+    - targetCorrespondingSourceObject: {fileID: 4928492724515802338, guid: 7771759d08a3e214f9855a4c2753c2bc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2103557832}
   m_SourcePrefab: {fileID: 100100000, guid: 7771759d08a3e214f9855a4c2753c2bc, type: 3}
 --- !u!1 &2047759081
 GameObject:
@@ -2049,6 +2082,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092351548}
   m_CullTransparentMesh: 1
+--- !u!1 &2103557829 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4928492724515802338, guid: 7771759d08a3e214f9855a4c2753c2bc, type: 3}
+  m_PrefabInstance: {fileID: 2019306443}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2103557832
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103557829}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2119231, y: 1.9359466, z: 1.7454742}
+  m_Center: {x: 0.0056705284, y: 0.85195845, z: 0.26193702}
+--- !u!114 &2103557833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103557829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26918c092dec6404ea83a1edef14c34c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDamage
+  damage: 15
 --- !u!1 &2108584665
 GameObject:
   m_ObjectHideFlags: 0
@@ -2058,7 +2130,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2108584666}
-  - component: {fileID: 2108584667}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -2083,19 +2154,6 @@ Transform:
   - {fileID: 1133081030}
   m_Father: {fileID: 2063733330}
   m_LocalEulerAnglesHint: {x: -25.184, y: 241.438, z: 132.962}
---- !u!114 &2108584667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2108584665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc0b949b3da2aad4882d659a779f430c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponStats
-  damage: 20
 --- !u!1 &2124548771
 GameObject:
   m_ObjectHideFlags: 0
