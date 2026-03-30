@@ -1272,7 +1272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6545a6ccbd8aad46adb6056a5c35a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  speed: 12
+  speed: 8
   jump: 2
   gravity: -9.81
   control: {fileID: 1593344070}
@@ -1282,6 +1282,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   animations: {fileID: 0}
+  sprintCost: 15
+  stamRegen: 20
+  swingCost: 20
+  stats: {fileID: 1593344077}
 --- !u!114 &1593344077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1296,7 +1300,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
   maxHP: 120
   currentHP: 0
+  maxSTAM: 100
+  currentSTAM: 0
   hpBar: {fileID: 1915409902}
+  stamBar: {fileID: 1809744534}
   attack: 20
 --- !u!95 &1593344078
 Animator:
@@ -1622,6 +1629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1809744532}
   - component: {fileID: 1809744533}
+  - component: {fileID: 1809744534}
   m_Layer: 5
   m_Name: STM
   m_TagString: Untagged
@@ -1701,6 +1709,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1809744534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809744531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0af9ddba3bc4aa43a38b26ab5c65e79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSTAM
+  sliderSTAM: {fileID: 1809744533}
 --- !u!4 &1893065489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bcdf2ffd0bb56b548a89d53a5a28a472, type: 3}

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 12f;
+    public float speed = 8f;
     public float jump = 2f;
     public float gravity = -9.81f * 2; //Unity's default gravity value
     public CharacterController control;
@@ -12,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     bool isGrounded;
     public Animator animations;
+    public float sprintCost = 15f;
+    public float stamRegen = 5f;
+    public float swingCost = 20f;
+    public PlayerStats stats;
 
     void Start(){
         animations = GetComponent<Animator>();
@@ -47,6 +51,15 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(1)) {
             animations.SetTrigger("Block");
+        }
+
+        //Sprint
+        if (Input.GetKey("left shift") && stats.currentSTAM > 0) {
+            speed = 12f;
+            stats.drainStam(sprintCost);
+        } else {
+            speed = 8f;
+            stats.gainStam(stamRegen);
         }
     }
 }
