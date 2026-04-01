@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
     public Animator animations;
     public float sprintCost = 15f;
-    public float stamRegen = 5f;
+    public float blockCost = 10f;
     public float swingCost = 20f;
     public PlayerStats stats;
 
@@ -45,21 +45,22 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         control.Move(velocity * Time.deltaTime);
 
-        //Animations
-        if (Input.GetMouseButtonDown(0)){
+        //Animations + Mechanics
+        if (Input.GetMouseButtonDown(0) && stats.currentSTAM > 0){
             animations.SetTrigger("Swing");
+            stats.drainStam(swingCost);
         }
-        if (Input.GetMouseButtonDown(1)) {
+        if (Input.GetMouseButtonDown(1) && stats.currentSTAM > 0) {
             animations.SetTrigger("Block");
+            stats.drainStam(blockCost);
         }
 
         //Sprint
         if (Input.GetKey("left shift") && stats.currentSTAM > 0) {
             speed = 12f;
-            stats.drainStam(sprintCost);
+            stats.drainStam(sprintCost * Time.deltaTime);
         } else {
             speed = 8f;
-            stats.gainStam(stamRegen);
         }
     }
 }

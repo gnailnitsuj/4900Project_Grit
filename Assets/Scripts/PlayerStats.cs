@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class PlayerStats : MonoBehaviour
    public PlayerHP hpBar;
    public PlayerSTAM stamBar;
    public float attack;
+   public float stamRegen;
+   private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
+   private Coroutine stamRate;
    
    private void Start() {
     currentHP = maxHP;
@@ -35,13 +39,20 @@ public void Heal (float amount) {
 }
 
 public void drainStam (float amount) {
-   currentSTAM -= amount * Time.deltaTime;
+   currentSTAM -= amount;
    stamBar.SetSlider(currentSTAM);
+   if (stamRate != null) StopCoroutine(stamRate);
+   stamRate = StartCoroutine(gainStam());
 }
 
-public void gainStam (float amount) {
-   currentSTAM += amount * Time.deltaTime;
-   stamBar.SetSlider(currentSTAM);
+private IEnumerator gainStam () {
+   yield return new WaitForSeconds(2f);
+        while(currentSTAM < maxSTAM) {
+            currentSTAM += maxSTAM / 100f;
+            stamBar.SetSlider(currentSTAM);
+            yield return regenTick;
+   }
+   stamRate = null;
 }
 
 private void Update() { 
