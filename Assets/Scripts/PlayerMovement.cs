@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float blockCost = 10f;
     public float swingCost = 20f;
     public PlayerStats stats;
+    public EnemyDamage dmgReduction;
 
     void Start(){
         animations = GetComponent<Animator>();

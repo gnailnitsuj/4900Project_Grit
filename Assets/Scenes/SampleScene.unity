@@ -1093,7 +1093,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -1283,9 +1283,10 @@ MonoBehaviour:
     m_Bits: 64
   animations: {fileID: 0}
   sprintCost: 15
-  stamRegen: 20
+  blockCost: 10
   swingCost: 20
   stats: {fileID: 1593344077}
+  dmgReduction: {fileID: 0}
 --- !u!114 &1593344077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1305,6 +1306,7 @@ MonoBehaviour:
   hpBar: {fileID: 1915409902}
   stamBar: {fileID: 1809744534}
   attack: 20
+  stamRegen: 0
 --- !u!95 &1593344078
 Animator:
   serializedVersion: 7
