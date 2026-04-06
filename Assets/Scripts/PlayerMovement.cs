@@ -12,11 +12,16 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     bool isGrounded;
     public Animator animations;
+    //Stamina costs per action
     public float sprintCost = 15f;
     public float blockCost = 10f;
     public float swingCost = 20f;
+    public float jumpCost = 12f;
     public PlayerStats stats;
+    private bool isSliding;
+    private Vector3 slopeSlideVelocity;
     public EnemyDamage dmgReduction;
+    
 
     void Start(){
         animations = GetComponent<Animator>();
@@ -31,6 +36,10 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
+        /*if (slopeSlideVelocity != Vector3.zero) {
+            isSliding = true;
+        }*/
+
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -38,13 +47,25 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
         control.Move(move * speed * Time.deltaTime);
 
-
         if(Input.GetButtonDown("Jump") && isGrounded){
             velocity.y = Mathf.Sqrt(jump * -2f * gravity);
+            stats.drainStam(jumpCost);
         }
 
         velocity.y += gravity * Time.deltaTime;
         control.Move(velocity * Time.deltaTime);
+
+        /*SetSlopeSlideVelocity();
+
+         if (slopeSlideVelocity == Vector3.zero) {
+            isSliding = false;
+        }
+
+        if (isSliding) {
+            Vector3 slideVelocity = slopeSlideVelocity;
+            velocity.y = speed;
+            control.Move(velocity * Time.deltaTime);
+        }*/
 
         //Animations + Mechanics
         if (Input.GetMouseButtonDown(0) && stats.currentSTAM > 0){
@@ -64,4 +85,15 @@ public class PlayerMovement : MonoBehaviour
             speed = 8f;
         }
     }
+
+/*private void SetSlopeSlideVelocity() {
+   if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, out RaycastHit hitInfo, 5)) {
+    float angle = Vector3.Angle(hitInfo.normal, Vector3.up);
+    if (angle >= control.slopeLimit) {
+        slopeSlideVelocity = Vector3.ProjectOnPlane(new Vector3(0, speed, 0), hitInfo.normal);
+        return;
+    }
+   }
+   slopeSlideVelocity = Vector3.zero;
+}*/
 }
