@@ -17,10 +17,15 @@ public class PlayerMovement : MonoBehaviour
     public float blockCost = 10f;
     public float swingCost = 20f;
     public float jumpCost = 12f;
+    // Cooldowns
+    public float lastSwing;
+    public float swingCooldown = 1.5f;
+    public float lastBlock;
+    public float blockCooldown = 2;
     public PlayerStats stats;
     private bool isSliding;
     private Vector3 slopeSlideVelocity;
-    public EnemyDamage dmgReduction;
+    public float dmgReduction = 10;
     
 
     void Start(){
@@ -69,10 +74,19 @@ public class PlayerMovement : MonoBehaviour
 
         //Animations + Mechanics
         if (Input.GetMouseButtonDown(0) && stats.currentSTAM > 0){
+            if (Time.time - lastSwing < swingCooldown) {
+                return; 
+            }
+            lastSwing = Time.time;
             animations.SetTrigger("Swing");
             stats.drainStam(swingCost);
         }
+
         if (Input.GetMouseButtonDown(1) && stats.currentSTAM > 0) {
+            if (Time.time - lastBlock < blockCooldown) {
+                return;
+            }
+            lastBlock = Time.time;
             animations.SetTrigger("Block");
             stats.drainStam(blockCost);
         }

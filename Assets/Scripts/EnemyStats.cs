@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyStats : MonoBehaviour
 {
    [SerializeField] private float maxHP;
-   [SerializeField]private float currentHP;
+   [SerializeField] private float currentHP;
    public float attack;
    
    private void Start() {

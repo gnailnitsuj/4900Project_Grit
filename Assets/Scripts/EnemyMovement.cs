@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class EnemyMovement : MonoBehaviour
     Transform target;
     NavMeshAgent agent;
     public Animator oppAnim;
+    private float lastAttack;
+    private float cooldown = 2;
 
 
     void Start()
@@ -21,8 +24,13 @@ public class EnemyMovement : MonoBehaviour
     {
         float distance = Vector3.Distance(target.position, transform.position);
         if (distance  <= radius){
+            if (Time.time - lastAttack < cooldown) {
+                return;
+            }
+            lastAttack = Time.time;
             agent.SetDestination(target.position);
             oppAnim.SetTrigger("skeleAtk");
+            
         }
-    }
+    }   
 }

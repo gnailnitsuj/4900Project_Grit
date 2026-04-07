@@ -1286,8 +1286,12 @@ MonoBehaviour:
   blockCost: 10
   swingCost: 20
   jumpCost: 12
+  lastSwing: 0
+  swingCooldown: 1.5
+  lastBlock: 0
+  blockCooldown: 2
   stats: {fileID: 1593344077}
-  dmgReduction: {fileID: 0}
+  dmgReduction: 10
 --- !u!114 &1593344077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2232,7 +2236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26918c092dec6404ea83a1edef14c34c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamage
-  damage: 15
+  damage: 5
 --- !u!1 &2108584665
 GameObject:
   m_ObjectHideFlags: 0
