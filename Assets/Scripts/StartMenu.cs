@@ -5,8 +5,6 @@ public class StartMenu : MonoBehaviour
 {
     public void OnStartClick() {
         SceneManager.LoadScene("SampleScene");
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
     }
 
     public void OnQuitClick() {

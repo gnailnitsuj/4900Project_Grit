@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -75,5 +76,6 @@ private void Update() {
 
 private void Death() { //Placeholder for death screen
    Debug.Log(". . .");
+   SceneManager.LoadScene("EndScreen");
 }
 }

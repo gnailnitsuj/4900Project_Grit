@@ -37,5 +37,6 @@ private void Update() {
 
 private void Death() { //Placeholder for death screen
    Debug.Log("Enemy Felled.");
+   Destroy(gameObject);
 }
 }

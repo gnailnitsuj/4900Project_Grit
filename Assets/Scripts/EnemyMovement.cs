@@ -24,13 +24,12 @@ public class EnemyMovement : MonoBehaviour
     {
         float distance = Vector3.Distance(target.position, transform.position);
         if (distance  <= radius){
-            if (Time.time - lastAttack < cooldown) {
-                return;
-            }
-            lastAttack = Time.time;
             agent.SetDestination(target.position);
             oppAnim.SetTrigger("skeleAtk");
-            
         }
+        if (Time.time - lastAttack < cooldown) {
+                return;
+            }
+        lastAttack = Time.time;
     }   
 }
