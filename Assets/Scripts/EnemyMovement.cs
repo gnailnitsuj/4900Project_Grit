@@ -10,6 +10,7 @@ public class EnemyMovement : MonoBehaviour
     public Animator oppAnim;
     private float lastAttack;
     private float cooldown = 2;
+    private Vector3 startPoint;
 
 
     void Start()
@@ -17,6 +18,7 @@ public class EnemyMovement : MonoBehaviour
         oppAnim = GetComponent<Animator>();
         target = TargetPlayer.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
+        startPoint = transform.position;
     }
 
     
@@ -26,6 +28,8 @@ public class EnemyMovement : MonoBehaviour
         if (distance  <= radius){
             agent.SetDestination(target.position);
             oppAnim.SetTrigger("skeleAtk");
+        } else {
+            agent.SetDestination(startPoint);
         }
         if (Time.time - lastAttack < cooldown) {
                 return;

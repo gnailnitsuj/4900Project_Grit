@@ -14,6 +14,7 @@ public class PlayerStats : MonoBehaviour
    public float stamRegen;
    private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
    private Coroutine stamRate;
+
    
    private void Start() {
     currentHP = maxHP;

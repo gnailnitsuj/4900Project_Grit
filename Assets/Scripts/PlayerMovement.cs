@@ -25,8 +25,6 @@ public class PlayerMovement : MonoBehaviour
     public PlayerStats stats;
     private bool isSliding;
     private Vector3 slopeSlideVelocity;
-    public float dmgReduction = -10;
-    EnemyDamage enemyDmg;
 
     void Start(){
         animations = GetComponent<Animator>();
@@ -73,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
         }*/
 
         //Animations + Mechanics
+        //Attacking
         if (Input.GetMouseButtonDown(0) && stats.currentSTAM > 0){
             if (Time.time - lastSwing < swingCooldown) {
                 return; 
@@ -80,9 +79,8 @@ public class PlayerMovement : MonoBehaviour
             lastSwing = Time.time;
             animations.SetTrigger("Swing");
             stats.drainStam(swingCost);
-            enemyDmg.damage = -10;
         }
-
+        //Blocking
         if (Input.GetMouseButtonDown(1) && stats.currentSTAM > 0) {
             if (Time.time - lastBlock < blockCooldown) {
                 return;
