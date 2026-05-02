@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
@@ -1963,6 +1963,7 @@ GameObject:
   m_Component:
   - component: {fileID: 946401447}
   - component: {fileID: 946401448}
+  - component: {fileID: 946401449}
   m_Layer: 0
   m_Name: Defense
   m_TagString: Block
@@ -2006,6 +2007,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.161972, y: 2.5504377, z: 2.1097107}
   m_Center: {x: -0.08098602, y: 0.6407083, z: 0.91181946}
+--- !u!114 &946401449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946401446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95cd2931e1adb2a4cb69e99f33f81056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DefenseStats
+  blockDmg: 10
 --- !u!1 &1058331741
 GameObject:
   m_ObjectHideFlags: 0
@@ -4069,7 +4083,7 @@ PrefabInstance:
     - target: {fileID: -5818889320171079249, guid: 7771759d08a3e214f9855a4c2753c2bc, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: a6c556febd0568643be3373ce442523a, type: 2}
+      objectReference: {fileID: 2100000, guid: fd9b7058f2d5d5b4a89f465b399e15e4, type: 2}
     - target: {fileID: 919132149155446097, guid: 7771759d08a3e214f9855a4c2753c2bc, type: 3}
       propertyPath: m_Name
       value: skele_rigged
@@ -4102,7 +4116,6 @@ GameObject:
   - component: {fileID: 2047759087}
   - component: {fileID: 2047759086}
   - component: {fileID: 2047759090}
-  - component: {fileID: 2047759091}
   m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
@@ -4333,18 +4346,6 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
---- !u!114 &2047759091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2047759081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cf2fabf941202d4e80800146232b8bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TreeCollision
 --- !u!1 &2052927627
 GameObject:
   m_ObjectHideFlags: 0
@@ -4741,6 +4742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamage
   damage: 5
+  reducedDmg: 0
 --- !u!1 &2108584665
 GameObject:
   m_ObjectHideFlags: 0

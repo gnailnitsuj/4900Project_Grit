@@ -4069,7 +4069,7 @@ PrefabInstance:
     - target: {fileID: -5818889320171079249, guid: 7771759d08a3e214f9855a4c2753c2bc, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: a6c556febd0568643be3373ce442523a, type: 2}
+      objectReference: {fileID: 2100000, guid: fd9b7058f2d5d5b4a89f465b399e15e4, type: 2}
     - target: {fileID: 919132149155446097, guid: 7771759d08a3e214f9855a4c2753c2bc, type: 3}
       propertyPath: m_Name
       value: skele_rigged
@@ -4102,7 +4102,6 @@ GameObject:
   - component: {fileID: 2047759087}
   - component: {fileID: 2047759086}
   - component: {fileID: 2047759090}
-  - component: {fileID: 2047759091}
   m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
@@ -4333,18 +4332,6 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
---- !u!114 &2047759091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2047759081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cf2fabf941202d4e80800146232b8bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TreeCollision
 --- !u!1 &2052927627
 GameObject:
   m_ObjectHideFlags: 0

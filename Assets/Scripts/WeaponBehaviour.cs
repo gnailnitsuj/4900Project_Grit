@@ -4,7 +4,7 @@ public class WeaponBehaviour : MonoBehaviour
 {
     public GameObject weapon;
     public GameObject defense;
-
+    
     //Weapon Hitboxes
     public void EnableWeaponCollider (int enableWep) {
         if (weapon != null) {
