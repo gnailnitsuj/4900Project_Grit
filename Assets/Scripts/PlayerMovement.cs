@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     public PlayerStats stats;
     private bool isSliding;
     private Vector3 slopeSlideVelocity;
+    //Particles 
+    [SerializeField] ParticleSystem collectParticle;
 
     void Start(){
         animations = GetComponent<Animator>();
@@ -87,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
             }
             lastBlock = Time.time;
             animations.SetTrigger("Block");
+            //Collect();
             stats.drainStam(blockCost);
         }
 
@@ -109,4 +112,8 @@ public class PlayerMovement : MonoBehaviour
    }
    slopeSlideVelocity = Vector3.zero;
 }*/
+
+public void Collect() {
+    collectParticle.Play();
+}
 }
