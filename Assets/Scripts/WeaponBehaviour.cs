@@ -4,6 +4,7 @@ public class WeaponBehaviour : MonoBehaviour
 {
     public GameObject weapon;
     public GameObject defense;
+    public GameObject parry;
     
     //Weapon Hitboxes
     public void EnableWeaponCollider (int enableWep) {
@@ -33,6 +34,21 @@ public class WeaponBehaviour : MonoBehaviour
                 else {
                     collider.enabled = false;
                     Debug.Log("unblock");
+                }
+            }
+        }
+    }
+
+    public void EnableParryCollider (int enablePar) {
+        if (parry != null) {
+            var collider = parry.GetComponent<Collider>();
+            if (collider != null) {
+                if (enablePar == 1) {
+                    collider.enabled = true;
+                    Debug.Log("parried");
+                }
+                else {
+                    collider.enabled = false;
                 }
             }
         }

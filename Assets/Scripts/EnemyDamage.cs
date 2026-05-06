@@ -4,21 +4,26 @@ public class EnemyDamage : MonoBehaviour
 {
     [SerializeField] public float damage;
     private float saveDmg;
-    public PlayerMovement block;
+    [SerializeField] ParticleSystem collectPart = null;
+    [SerializeField] ParticleSystem collectPartR = null;
     
     void OnTriggerEnter(Collider other){
 
         if (other.CompareTag("Player")) {
             PlayerStats player = other.GetComponent<PlayerStats>();
             player.TakeDamage(damage);
-            block.Collect();
         }
 
 
         else if (other.CompareTag("Block")) {
             damage = damage/2;
-            block.Collect();
+            Collect();
             Debug.Log("reduced");
+        }
+
+        else if (other.CompareTag("Riposte")) {
+            damage = 0;
+            CollectR();
         }
 
         else {
@@ -28,6 +33,13 @@ public class EnemyDamage : MonoBehaviour
 
     void Start() {
         saveDmg = damage;
-        block = GetComponent<PlayerMovement>();
+    }
+
+    void Collect() {
+        collectPart.Play();
+    }
+
+    void CollectR() {
+        collectPartR.Play();
     }
 }

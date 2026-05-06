@@ -14,9 +14,10 @@ public class PlayerMovement : MonoBehaviour
     public Animator animations;
     //Stamina costs per action
     public float sprintCost = 15f;
-    public float blockCost = 10f;
+    public float blockCost = 5f;
     public float swingCost = 20f;
     public float jumpCost = 12f;
+    public float riposteCost = 8f;
     // Cooldowns
     public float lastSwing;
     public float swingCooldown = 1.5f;
@@ -25,8 +26,6 @@ public class PlayerMovement : MonoBehaviour
     public PlayerStats stats;
     private bool isSliding;
     private Vector3 slopeSlideVelocity;
-    //Particles 
-    [SerializeField] ParticleSystem collectParticle;
 
     void Start(){
         animations = GetComponent<Animator>();
@@ -89,8 +88,13 @@ public class PlayerMovement : MonoBehaviour
             }
             lastBlock = Time.time;
             animations.SetTrigger("Block");
-            //Collect();
             stats.drainStam(blockCost);
+        }
+
+        //Riposte
+        if (Input.GetKeyDown("r") && stats.currentSTAM > 0) {
+            animations.SetTrigger("Riposte");
+            stats.drainStam(riposteCost);
         }
 
         //Sprint
@@ -112,8 +116,4 @@ public class PlayerMovement : MonoBehaviour
    }
    slopeSlideVelocity = Vector3.zero;
 }*/
-
-public void Collect() {
-    collectParticle.Play();
-}
 }
