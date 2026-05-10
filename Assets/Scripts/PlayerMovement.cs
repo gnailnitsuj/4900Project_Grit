@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 8f;
-    public float jump = 2f;
+    public float jump = 1f;
     public float gravity = -9.81f * 2; //Unity's default gravity value
     public CharacterController control;
     Vector3 velocity;
@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
         control.Move(move * speed * Time.deltaTime);
 
         if(Input.GetButtonDown("Jump") && isGrounded){
-            velocity.y = Mathf.Sqrt(jump * -2f * gravity);
+            velocity.y = Mathf.Sqrt(jump * -1f * gravity);
             stats.drainStam(jumpCost);
         }
 
