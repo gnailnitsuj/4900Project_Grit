@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
-   [SerializeField] private float maxHP;
-   [SerializeField] private float currentHP;
+   [SerializeField] public float maxHP;
+   [SerializeField] public float currentHP;
    [SerializeField] private float maxSTAM;
    [SerializeField] public float currentSTAM;
    public PlayerHP hpBar;
@@ -14,6 +14,7 @@ public class PlayerStats : MonoBehaviour
    public float stamRegen;
    private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
    private Coroutine stamRate;
+   private Coroutine healRate;
 
    
    private void Start() {
@@ -55,6 +56,21 @@ private IEnumerator gainStam () {
             yield return regenTick;
    }
    stamRate = null;
+}
+
+public void HealOverTime (int amount, int duration) {
+   StartCoroutine(gainHealth(amount, duration));
+}
+
+IEnumerator gainHealth (float amount, float duration) {
+   float healAmount = 0;
+   float healDuration = amount / duration;
+   while (healAmount < amount) {
+      currentHP += healDuration;
+      healAmount += healDuration;
+      hpBar.SetSlider(currentHP);
+      yield return new WaitForSeconds(2f);
+   }
 }
 
 private void Update() { 
