@@ -12,12 +12,13 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     bool isGrounded;
     public Animator animations;
-    //Stamina costs per action
+    //Stamina & Mana costs per action
     public float sprintCost = 15f;
     public float blockCost = 5f;
     public float swingCost = 20f;
     public float jumpCost = 12f;
     public float riposteCost = 8f;
+    public float blastCost = 25f;
     // Cooldowns
     public float lastSwing;
     public float swingCooldown = 1.5f;
@@ -95,6 +96,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown("r") && stats.currentSTAM > 0) {
             animations.SetTrigger("Riposte");
             stats.drainStam(riposteCost);
+        }
+
+        //Blast
+        if (Input.GetKeyDown("e") && stats.currentMP > 0) {
+            animations.SetTrigger("Blast");
+            stats.drainMP(blastCost);
         }
 
         //Sprint

@@ -8,8 +8,11 @@ public class PlayerStats : MonoBehaviour
    [SerializeField] public float currentHP;
    [SerializeField] private float maxSTAM;
    [SerializeField] public float currentSTAM;
+   [SerializeField] public float maxMP;
+   [SerializeField] public float currentMP;
    public PlayerHP hpBar;
    public PlayerSTAM stamBar;
+   public PlayerMANA mpBar;
    public float attack;
    public float stamRegen;
    private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
@@ -22,6 +25,8 @@ public class PlayerStats : MonoBehaviour
     hpBar.SetSliderMax(maxHP);
     currentSTAM = maxSTAM;
     stamBar.SetSliderMax(maxSTAM);
+    currentMP = maxMP;
+    mpBar.SetSliderMax(maxMP);
    }
 
 public void dealDamage (GameObject target) {
@@ -34,6 +39,11 @@ public void dealDamage (GameObject target) {
 public void TakeDamage (float amount) {
    currentHP -= amount;
    hpBar.SetSlider(currentHP);
+}
+
+public void drainMP (float amount) {
+   currentMP -= amount;
+   mpBar.SetSlider(currentMP);
 }
 
 public void Heal (float amount) {
