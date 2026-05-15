@@ -23,7 +23,11 @@ public class PlayerMovement : MonoBehaviour
     public float lastSwing;
     public float swingCooldown = 1.5f;
     public float lastBlock;
-    public float blockCooldown = 2;
+    public float blockCooldown = 2f;
+    public float lastRiposte;
+    public float riposteCooldown = 1.5f;
+    public float lastCast;
+    public float castCooldown = 3f;
     public PlayerStats stats;
     private bool isSliding;
     private Vector3 slopeSlideVelocity;
@@ -94,12 +98,20 @@ public class PlayerMovement : MonoBehaviour
 
         //Riposte
         if (Input.GetKeyDown("r") && stats.currentSTAM > 0) {
+            if (Time.time - lastRiposte < riposteCooldown) {
+                return;
+            }
+            lastRiposte = Time.time;
             animations.SetTrigger("Riposte");
             stats.drainStam(riposteCost);
         }
 
         //Blast
         if (Input.GetKeyDown("e") && stats.currentMP > 0) {
+            if (Time.time - lastCast < castCooldown) {
+                return;
+            }
+            lastCast = Time.time;
             animations.SetTrigger("Blast");
             stats.drainMP(blastCost);
         }

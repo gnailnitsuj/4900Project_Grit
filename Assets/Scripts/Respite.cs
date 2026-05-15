@@ -5,6 +5,7 @@ public class Respite : MonoBehaviour, IIteractable
     [SerializeField] public PlayerStats player;
     public int healAmt = 1;
     public int healTime = 100;
+    public float gainMP = 100;
     
     public string GetDescription() {
         return "'L' to Rest - Depart";
@@ -14,6 +15,11 @@ public class Respite : MonoBehaviour, IIteractable
         if (player.currentHP < player.maxHP) {
         player.HealOverTime(healAmt, healTime);
         Debug.Log("healed");
+        }
+
+        if (player.currentMP < player.maxMP) {
+            player.regenMP(gainMP);
+            Debug.Log("regened");
         }
     }
 }

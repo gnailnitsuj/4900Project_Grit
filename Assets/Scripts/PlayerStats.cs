@@ -46,6 +46,11 @@ public void drainMP (float amount) {
    mpBar.SetSlider(currentMP);
 }
 
+public void regenMP (float amount) {
+   currentMP += amount;
+   mpBar.SetSlider(currentMP);
+}
+
 public void Heal (float amount) {
    currentHP += amount;
    hpBar.SetSlider(currentHP);
@@ -59,7 +64,7 @@ public void drainStam (float amount) {
 }
 
 private IEnumerator gainStam () {
-   yield return new WaitForSeconds(2f);
+   yield return new WaitForSeconds(1f);
         while(currentSTAM < maxSTAM) {
             currentSTAM += maxSTAM / 100f;
             stamBar.SetSlider(currentSTAM);
