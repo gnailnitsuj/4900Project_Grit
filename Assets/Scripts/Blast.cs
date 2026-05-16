@@ -8,11 +8,17 @@ public class Blast : MonoBehaviour
     [SerializeField] public PlayerStats playerStats;
     List<ParticleCollisionEvent> colEvent = new List<ParticleCollisionEvent>();
     public float blastDamage = 40f;
+    public float lastBlast;
+    public float blastCooldown = 3f;
 
     void Update() {
         if(Input.GetKeyDown("e") && playerStats.currentMP > 1) {
             particleSystem.Play();
         }
+        if (Time.time - lastBlast < blastCooldown) {
+                return;
+        }
+        lastBlast = Time.time;
     }
 
     void OnParticleCollision(GameObject other) {
